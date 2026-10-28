@@ -1,4 +1,4 @@
-local DanloUI = {Version = "1.0.0"}
+local DanloUI = {Version = "1.1.0"}
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -1165,7 +1165,7 @@ local function build()
  set(obj[15],"Selectable",false)
  set(obj[15],"Size",UDim2.new(0,277,0,14))
  set(obj[15],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[15],"Text","N E O N   /   C O N T R O L   S Y S T E M")
+ set(obj[15],"Text","Creador DANLO")
  set(obj[15],"TextColor3",Color3.new(0.41176471,0.43137255,0.48235294))
  set(obj[15],"TextDirection",enum("TextDirection",0))
  set(obj[15],"TextScaled",false)
@@ -1225,7 +1225,7 @@ local function build()
  set(obj[18],"Selectable",false)
  set(obj[18],"Size",UDim2.new(1,-12,1,0))
  set(obj[18],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[18],"Text","●  PLANTILLA EDITABLE")
+ set(obj[18],"Text","")
  set(obj[18],"TextColor3",Color3.new(0.47058824,0.87843138,0.72549021))
  set(obj[18],"TextDirection",enum("TextDirection",0))
  set(obj[18],"TextScaled",false)
@@ -1572,7 +1572,7 @@ local function build()
  set(obj[35],"Selectable",false)
  set(obj[35],"Size",UDim2.new(1,-48,1,0))
  set(obj[35],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[35],"Text","INICIO")
+ set(obj[35],"Text","")
  set(obj[35],"TextColor3",Color3.new(0.98039216,0.98823529,1))
  set(obj[35],"TextDirection",enum("TextDirection",0))
  set(obj[35],"TextScaled",false)
@@ -3849,7 +3849,7 @@ local function build()
  set(obj[498],"Selectable",false)
  set(obj[498],"Size",UDim2.new(0,117,0,28))
  set(obj[498],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[498],"Text","TU PANEL PERSONAL")
+ set(obj[498],"Text","")
  set(obj[498],"TextColor3",Color3.new(0.57254905,0.58431375,0.63529414))
  set(obj[498],"TextDirection",enum("TextDirection",0))
  set(obj[498],"TextScaled",false)
@@ -3924,7 +3924,7 @@ local function build()
  set(obj[501],"Selectable",false)
  set(obj[501],"Size",UDim2.new(0,350,0,32))
  set(obj[501],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[501],"Text","INICIO")
+ set(obj[501],"Text","")
  set(obj[501],"TextColor3",Color3.new(0.98039216,0.98823529,1))
  set(obj[501],"TextDirection",enum("TextDirection",0))
  set(obj[501],"TextScaled",false)
@@ -3959,7 +3959,7 @@ local function build()
  set(obj[502],"Selectable",false)
  set(obj[502],"Size",UDim2.new(0,465,0,19))
  set(obj[502],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[502],"Text","Menú base listo para que diseñes tus propias funciones.")
+ set(obj[502],"Text","")
  set(obj[502],"TextColor3",Color3.new(0.75294119,0.78039217,0.84313726))
  set(obj[502],"TextDirection",enum("TextDirection",0))
  set(obj[502],"TextScaled",false)
@@ -5040,7 +5040,7 @@ local function build()
  set(obj[972],"Selectable",false)
  set(obj[972],"Size",UDim2.new(0,451,0,19))
  set(obj[972],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[972],"Text","D A N L O H U B   /   E D I T O R")
+ set(obj[972],"Text","")
  set(obj[972],"TextColor3",Color3.new(1,0.60000002,0.65490198))
  set(obj[972],"TextDirection",enum("TextDirection",0))
  set(obj[972],"TextScaled",false)
@@ -5075,7 +5075,7 @@ local function build()
  set(obj[973],"Selectable",false)
  set(obj[973],"Size",UDim2.new(0,375,0,40))
  set(obj[973],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[973],"Text","TU MENÚ. TU ESTILO.")
+ set(obj[973],"Text","")
  set(obj[973],"TextColor3",Color3.new(0.98039216,0.98823529,1))
  set(obj[973],"TextDirection",enum("TextDirection",0))
  set(obj[973],"TextScaled",false)
@@ -5110,7 +5110,7 @@ local function build()
  set(obj[974],"Selectable",false)
  set(obj[974],"Size",UDim2.new(0,540,0,22))
  set(obj[974],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[974],"Text","PLANTILLA VISUAL · PERSONALIZA CADA MÓDULO")
+ set(obj[974],"Text","")
  set(obj[974],"TextColor3",Color3.new(0.79215688,0.7019608,0.75686276))
  set(obj[974],"TextDirection",enum("TextDirection",0))
  set(obj[974],"TextScaled",false)
@@ -7235,7 +7235,7 @@ local function build()
  set(obj[1426],"Selectable",false)
  set(obj[1426],"Size",UDim2.new(0,500,0,26))
  set(obj[1426],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[1426],"Text","DANLO  //  NEON EDITION")
+ set(obj[1426],"Text","")
  set(obj[1426],"TextColor3",Color3.new(0.41176471,0.43137255,0.48235294))
  set(obj[1426],"TextDirection",enum("TextDirection",0))
  set(obj[1426],"TextScaled",false)
@@ -7420,7 +7420,7 @@ local function build()
  set(obj[1447],"Position",UDim2.new(0,0,0,-5))
  set(obj[1447],"Size",UDim2.new(0,580,0,15))
  set(obj[1447],"BackgroundTransparency",1)
- set(obj[1447],"Text","ICONOS ORIGINALES   ·   ARRASTRA, COPIA Y PERSONALIZA")
+ set(obj[1447],"Text","")
  set(obj[1447],"TextSize",10)
  set(obj[1447],"TextColor3",Color3.new(0.89411765,0.50196078,0.63529412))
  set(obj[1447],"FontFace",Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Bold,Enum.FontStyle.Normal))
@@ -7919,7 +7919,7 @@ local function build()
  set(obj[1489],"Position",UDim2.new(0,0,0,30))
  set(obj[1489],"Size",UDim2.new(0,77,0,15))
  set(obj[1489],"BackgroundTransparency",1)
- set(obj[1489],"Text","INICIO")
+ set(obj[1489],"Text","")
  set(obj[1489],"TextSize",8)
  set(obj[1489],"TextColor3",Color3.new(0.82745098,0.83529412,0.89411765))
  set(obj[1489],"TextXAlignment",enum("TextXAlignment",2))
@@ -13803,7 +13803,7 @@ function DanloUI:CreateWindow(config)
  local running=true
  local connections={}
  local tabs={}
- local activeId="home"
+ local activeId=nil
  local nextId=0
  local pageCards={}
  local animations={}
@@ -13837,12 +13837,24 @@ function DanloUI:CreateWindow(config)
  navArea.ScrollingDirection=Enum.ScrollingDirection.Y
  navArea.CanvasSize=UDim2.fromOffset(0,351)
  navArea.Parent=sidebar
- local navHome=sidebar:WaitForChild("Nav_home")
- navHome.Parent=navArea
- navHome.Position=UDim2.fromOffset(10,3)
  local sidebarTiles=home:WaitForChild("IconPalette")
- local quicks={home:FindFirstChild("Quick_plantilla"),home:FindFirstChild("Quick_plantilla2"),home:FindFirstChild("Quick_plantilla3")}
- for _,quick in ipairs(quicks) do if quick then quick.Visible=false end end
+ sidebarTiles.Name="DanloUIIconAssets"
+ sidebarTiles.Parent=gui
+ sidebarTiles.Visible=false
+ home:Destroy()
+ local navHome=sidebar:FindFirstChild("Nav_home")
+ if navHome then navHome:Destroy() end
+ local footerProfile=sidebar:FindFirstChild("FooterProfile")
+ if footerProfile then footerProfile.Visible=false end
+ local footer=window:FindFirstChild("Footer")
+ if footer then
+  local left=footer:FindFirstChild("BottomLeft")
+  if left then left.Visible=false end
+ end
+ local badge=header:FindFirstChild("PremiumTag")
+ if badge then badge.Visible=false end
+ local caption=header:FindFirstChild("BrandCaption")
+ if caption then caption.Text="Creador DANLO" end
  local function iconFor(name)
   local str=tostring(name or ""):upper()
   str=str:gsub("[^%w_]","")
@@ -13865,36 +13877,21 @@ function DanloUI:CreateWindow(config)
 
  local function showPage(id)
   if not alive() then return end
-  local page
-  local title,subtitle
-  if id=="home" then
-   page=home
-   title="INICIO"
-   subtitle=tostring(config.Subtitle or "Crea tus pestañas con la librería DanloUI")
-  else
-   local tab=tabs[id]
-   if not tab then return end
-   page=tab.Page
-   title=tab.Name
-   subtitle=tab.Description
-  end
+  local tab=tabs[id]
+  if not tab then return end
   activeId=id
-  workspacePanel.CurrentPageTitle.Text=title
-  workspacePanel.CurrentPageDescription.Text=subtitle
+  workspacePanel.CurrentPageTitle.Text=tab.Name
+  workspacePanel.CurrentPageDescription.Text=tab.Description
+  workspacePanel.CurrentPageDescription.Visible=(tab.Description~="")
   workspacePanel.SearchFrame.Visible=false
-  home.Visible=(id=="home")
-  navHome.BackgroundColor3=id=="home" and Color3.fromRGB(53,25,37) or Color3.fromRGB(16,17,23)
-  local homeInd=navHome:FindFirstChild("ActiveIndicator")
-  if homeInd then homeInd.BackgroundColor3=id=="home" and Color3.fromRGB(235,67,110) or Color3.fromRGB(16,17,23) end
-  for key,tab in pairs(tabs) do
+  for key,item in pairs(tabs) do
    local chosen=(key==id)
-   tab.Page.Visible=chosen
-   tab.Nav.BackgroundColor3=chosen and Color3.fromRGB(53,25,37) or Color3.fromRGB(16,17,23)
-   local ind=tab.Nav:FindFirstChild("ActiveIndicator")
+   item.Page.Visible=chosen
+   item.Nav.BackgroundColor3=chosen and Color3.fromRGB(53,25,37) or Color3.fromRGB(16,17,23)
+   local ind=item.Nav:FindFirstChild("ActiveIndicator")
    if ind then ind.BackgroundColor3=chosen and Color3.fromRGB(235,67,110) or Color3.fromRGB(16,17,23) end
   end
  end
- keep(navHome.Activated:Connect(function() showPage("home") end))
 
  local win={Gui=gui,Window=window,Version=DanloUI.Version}
  function win:Notify(status,name) notify(status,name) end
@@ -13902,7 +13899,7 @@ function DanloUI:CreateWindow(config)
  function win:ToggleVisible() if alive() then window.Visible=not window.Visible end end
  function win:SelectTab(id)
   local tab=tabs[id]
-  if tab then showPage(id) elseif id=="home" then showPage("home") end
+  if tab then showPage(id) end
  end
  function win:GetTab(id) return tabs[id] end
  function win:Destroy()
@@ -13949,13 +13946,13 @@ function DanloUI:CreateWindow(config)
   local id="tab"..tostring(nextId)
   local nav=navTemplate:Clone()
   nav.Name="Nav_"..id
-  nav.Position=UDim2.fromOffset(10,53+(nextId-1)*50)
+  nav.Position=UDim2.fromOffset(10,3+(nextId-1)*50)
   nav.NavLabel.Text=tabName
   nav.NavLabel.TextTruncate=Enum.TextTruncate.AtEnd
   nav.IndexChip.IndexText.Text=tostring(nextId)
   setNavIcon(nav,info.Icon or "EXTRAS")
   nav.Parent=navArea
-  navArea.CanvasSize=UDim2.fromOffset(0,math.max(351,53+nextId*50))
+  navArea.CanvasSize=UDim2.fromOffset(0,math.max(351,3+nextId*50))
   local page=pageTemplate:Clone()
   page.Name="Page_"..id
   page.Visible=false
@@ -13965,23 +13962,7 @@ function DanloUI:CreateWindow(config)
   local tab={Name=tabName,Description=tostring(info.Description or ""),Icon=info.Icon,Page=page,Nav=nav,Controls={},Id=id}
   tabs[id]=tab
   keep(nav.Activated:Connect(function()showPage(id)end))
-  if nextId<=3 then
-   local quick=quicks[nextId]
-   if quick then
-    quick.Visible=true
-    quick.CategoryTitle.Text=tabName
-    quick.CategoryDescription.Text=tab.Description~="" and tab.Description or "Personaliza esta sección"
-    local realIcon=iconFor(info.Icon or "EXTRAS")
-    if realIcon then
-     local oldIcon=quick:FindFirstChild("CategoryIcon")
-     local copy=realIcon:Clone()
-     copy.Name="CategoryIcon"
-     if oldIcon then copy.Position=oldIcon.Position;copy.Size=oldIcon.Size;oldIcon:Destroy() end
-     copy.Parent=quick
-    end
-    keep(quick.Activated:Connect(function() showPage(id) end))
-   end
-  end
+  if nextId==1 then showPage(id) end
   function tab:Select() showPage(id) end
   function tab:CreateToggle(args2)
    local card,name,cfg=createCard(tab,"Toggle",args2)
@@ -14212,15 +14193,7 @@ function DanloUI:CreateWindow(config)
     if visible then grad.Rotation=(elapsed*48)%360 end
    end
   end
-  if home.Visible then
-   local hero=home:FindFirstChild("Hero")
-   if hero then
-    for i=1,3 do
-     local orbit=hero:FindFirstChild("Orbit"..i)
-     if orbit then orbit.Rotation=(elapsed*(i%2==0 and -9 or 12)+i*25)%360 end
-    end
-   end
-  end
+
  end))
  local dragging=false
  local dragStart
@@ -14258,12 +14231,9 @@ function DanloUI:CreateWindow(config)
  end))
  keep(header.MinimizeButton.Activated:Connect(function()win:SetVisible(false)end))
  keep(header.CloseButton.Activated:Connect(function()win:SetVisible(false)end))
- local text=config.Title
- if type(text)=="string" and text~="" and text~="DANLOHUB" then
-  local subtitle=header:FindFirstChild("BrandSubtitle")
-  if subtitle and subtitle:IsA("TextLabel") then subtitle.Text=text end
- end
- showPage("home")
+ workspacePanel.CurrentPageTitle.Text=""
+ workspacePanel.CurrentPageDescription.Text=""
+ workspacePanel.CurrentPageDescription.Visible=false
  window.Visible=true
  DanloUI._activeWindow=win
  return win
