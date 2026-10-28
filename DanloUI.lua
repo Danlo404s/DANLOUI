@@ -1,4 +1,4 @@
-local DanloUI = {Version = "1.3.0"}
+local DanloUI = {Version = "1.3.1"}
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -13770,6 +13770,107 @@ local function setCardText(card,kind,cfg)
  return name
 end
 
+local function stylePremiumTag(header)
+ local tag=header:FindFirstChild("PremiumTag")
+ if not tag then return {} end
+ tag.BackgroundColor3=Color3.fromRGB(44,8,22)
+ tag.BackgroundTransparency=0.04
+ tag.BorderSizePixel=0
+ tag.ClipsDescendants=false
+ local corner=tag:FindFirstChildOfClass("UICorner")
+ if corner then corner.CornerRadius=UDim.new(0,7) end
+ local fill=Instance.new("UIGradient")
+ fill.Name="PremiumFill"
+ fill.Color=ColorSequence.new({
+  ColorSequenceKeypoint.new(0,Color3.fromRGB(38,6,19)),
+  ColorSequenceKeypoint.new(0.5,Color3.fromRGB(93,13,39)),
+  ColorSequenceKeypoint.new(1,Color3.fromRGB(36,5,17))
+ })
+ fill.Rotation=0
+ fill.Parent=tag
+ local border=Instance.new("UIStroke")
+ border.Name="PremiumRedBorder"
+ border.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+ border.Color=Color3.fromRGB(255,65,107)
+ border.Thickness=1.4
+ border.Transparency=0.16
+ border.Parent=tag
+ local flow=Instance.new("UIGradient")
+ flow.Name="NeonFlow"
+ flow.Color=ColorSequence.new({
+  ColorSequenceKeypoint.new(0,Color3.fromRGB(151,15,55)),
+  ColorSequenceKeypoint.new(0.34,Color3.fromRGB(255,73,116)),
+  ColorSequenceKeypoint.new(0.54,Color3.fromRGB(255,172,190)),
+  ColorSequenceKeypoint.new(0.75,Color3.fromRGB(255,50,98)),
+  ColorSequenceKeypoint.new(1,Color3.fromRGB(133,12,47))
+ })
+ flow.Parent=border
+ local halo=Instance.new("UIStroke")
+ halo.Name="PremiumOuterGlow"
+ halo.Color=Color3.fromRGB(235,32,82)
+ halo.Thickness=3
+ halo.Transparency=0.76
+ halo.Parent=tag
+ local label=tag:FindFirstChild("TagText")
+ if label then
+  label.Position=UDim2.fromOffset(34,0)
+  label.Size=UDim2.new(1,-39,1,0)
+  label.Text="PREMIUN"
+  label.TextSize=11
+  label.FontFace=Font.new("rbxasset://fonts/families/Zekton.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal)
+  label.TextColor3=Color3.fromRGB(255,91,129)
+  label.TextStrokeColor3=Color3.fromRGB(255,35,82)
+  label.TextStrokeTransparency=0.53
+  label.TextTransparency=0
+  label.TextXAlignment=Enum.TextXAlignment.Center
+  label.ZIndex=4
+  local glow=label:Clone()
+  glow.Name="PremiumTextGlow"
+  glow.TextSize=13
+  glow.TextColor3=Color3.fromRGB(255,52,99)
+  glow.TextTransparency=0.72
+  glow.TextStrokeTransparency=0.38
+  glow.ZIndex=2
+  glow.Parent=tag
+ end
+ local crownGlow=Instance.new("TextLabel")
+ crownGlow.Name="CrownGlow"
+ crownGlow.BackgroundTransparency=1
+ crownGlow.Position=UDim2.fromOffset(6,-1)
+ crownGlow.Size=UDim2.fromOffset(27,30)
+ crownGlow.Text="♛"
+ crownGlow.FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Bold,Enum.FontStyle.Normal)
+ crownGlow.TextSize=26
+ crownGlow.TextColor3=Color3.fromRGB(255,36,83)
+ crownGlow.TextTransparency=0.65
+ crownGlow.TextStrokeColor3=Color3.fromRGB(255,40,88)
+ crownGlow.TextStrokeTransparency=0.3
+ crownGlow.ZIndex=2
+ crownGlow.Parent=tag
+ local crown=crownGlow:Clone()
+ crown.Name="Crown"
+ crown.Position=UDim2.fromOffset(7,0)
+ crown.Size=UDim2.fromOffset(25,28)
+ crown.TextSize=21
+ crown.TextColor3=Color3.fromRGB(255,96,136)
+ crown.TextTransparency=0
+ crown.TextStrokeColor3=Color3.fromRGB(246,35,88)
+ crown.TextStrokeTransparency=0.23
+ crown.ZIndex=5
+ crown.Parent=tag
+ local pulse=TweenInfo.new(1.25,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true)
+ local tw1=TweenService:Create(crown,pulse,{TextColor3=Color3.fromRGB(255,189,204),TextStrokeTransparency=0.04})
+ local tw2=TweenService:Create(crownGlow,pulse,{TextTransparency=0.38})
+ local tw3=TweenService:Create(border,pulse,{Transparency=0,Thickness=1.9})
+ local tw4=TweenService:Create(halo,pulse,{Transparency=0.55})
+ local tw5
+ if label then tw5=TweenService:Create(label,pulse,{TextColor3=Color3.fromRGB(255,174,194),TextStrokeTransparency=0.3}) end
+ local tweens={tw1,tw2,tw3,tw4}
+ if tw5 then table.insert(tweens,tw5) end
+ for _,tw in ipairs(tweens) do tw:Play() end
+ return tweens
+end
+
 function DanloUI:CreateWindow(config)
  config=config or {}
  local player=Players.LocalPlayer
@@ -13806,7 +13907,7 @@ function DanloUI:CreateWindow(config)
  local activeId="home"
  local nextId=0
  local pageCards={}
- local animations={}
+ local animations=stylePremiumTag(header)
  local gradients={}
  local function keep(conn)
   table.insert(connections,conn)
