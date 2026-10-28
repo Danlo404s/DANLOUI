@@ -1,4 +1,4 @@
-local DanloUI = {Version = "1.3.1"}
+local DanloUI = {Version = "1.3.2"}
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -13773,100 +13773,158 @@ end
 local function stylePremiumTag(header)
  local tag=header:FindFirstChild("PremiumTag")
  if not tag then return {} end
- tag.BackgroundColor3=Color3.fromRGB(44,8,22)
- tag.BackgroundTransparency=0.04
+
+ tag.Position=UDim2.fromOffset(600,19)
+ tag.Size=UDim2.fromOffset(124,28)
+ tag.BackgroundColor3=Color3.fromRGB(22,8,17)
+ tag.BackgroundTransparency=0
  tag.BorderSizePixel=0
  tag.ClipsDescendants=false
- local corner=tag:FindFirstChildOfClass("UICorner")
- if corner then corner.CornerRadius=UDim.new(0,7) end
+ tag.ZIndex=5
+ local radius=tag:FindFirstChildOfClass("UICorner")
+ if radius then radius.CornerRadius=UDim.new(0,7) end
+ for _,old in ipairs(tag:GetChildren()) do
+  if old.Name=="PremiumFill" or old.Name=="PremiumRedBorder" or
+     old.Name=="PremiumOuterGlow" or old.Name=="PremiumTextGlow" or
+     old.Name=="Crown" or old.Name=="CrownGlow" or old.Name=="PremiumCrown" or
+     old.Name=="PremiumSeparator" then
+   old:Destroy()
+  end
+ end
+
  local fill=Instance.new("UIGradient")
  fill.Name="PremiumFill"
  fill.Color=ColorSequence.new({
-  ColorSequenceKeypoint.new(0,Color3.fromRGB(38,6,19)),
-  ColorSequenceKeypoint.new(0.5,Color3.fromRGB(93,13,39)),
-  ColorSequenceKeypoint.new(1,Color3.fromRGB(36,5,17))
+  ColorSequenceKeypoint.new(0,Color3.fromRGB(22,7,18)),
+  ColorSequenceKeypoint.new(0.48,Color3.fromRGB(58,11,31)),
+  ColorSequenceKeypoint.new(1,Color3.fromRGB(25,7,20))
  })
  fill.Rotation=0
  fill.Parent=tag
+
+ local halo=Instance.new("UIStroke")
+ halo.Name="PremiumOuterGlow"
+ halo.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+ halo.Color=Color3.fromRGB(245,23,76)
+ halo.Thickness=3
+ halo.Transparency=0.86
+ halo.Parent=tag
+
  local border=Instance.new("UIStroke")
  border.Name="PremiumRedBorder"
  border.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
- border.Color=Color3.fromRGB(255,65,107)
- border.Thickness=1.4
- border.Transparency=0.16
+ border.Color=Color3.fromRGB(255,56,103)
+ border.Thickness=1.3
+ border.Transparency=0.12
  border.Parent=tag
- local flow=Instance.new("UIGradient")
- flow.Name="NeonFlow"
- flow.Color=ColorSequence.new({
-  ColorSequenceKeypoint.new(0,Color3.fromRGB(151,15,55)),
-  ColorSequenceKeypoint.new(0.34,Color3.fromRGB(255,73,116)),
-  ColorSequenceKeypoint.new(0.54,Color3.fromRGB(255,172,190)),
-  ColorSequenceKeypoint.new(0.75,Color3.fromRGB(255,50,98)),
-  ColorSequenceKeypoint.new(1,Color3.fromRGB(133,12,47))
+ local borderGradient=Instance.new("UIGradient")
+ borderGradient.Name="NeonFlow"
+ borderGradient.Color=ColorSequence.new({
+  ColorSequenceKeypoint.new(0,Color3.fromRGB(178,33,69)),
+  ColorSequenceKeypoint.new(0.35,Color3.fromRGB(255,86,126)),
+  ColorSequenceKeypoint.new(0.50,Color3.fromRGB(255,159,178)),
+  ColorSequenceKeypoint.new(0.72,Color3.fromRGB(255,62,110)),
+  ColorSequenceKeypoint.new(1,Color3.fromRGB(176,33,74))
  })
- flow.Parent=border
- local halo=Instance.new("UIStroke")
- halo.Name="PremiumOuterGlow"
- halo.Color=Color3.fromRGB(235,32,82)
- halo.Thickness=3
- halo.Transparency=0.76
- halo.Parent=tag
+ borderGradient.Parent=border
+
  local label=tag:FindFirstChild("TagText")
  if label then
-  label.Position=UDim2.fromOffset(34,0)
-  label.Size=UDim2.new(1,-39,1,0)
+  label.Position=UDim2.fromOffset(45,0)
+  label.Size=UDim2.fromOffset(74,28)
+  label.BackgroundTransparency=1
   label.Text="PREMIUN"
+  label.TextScaled=false
   label.TextSize=11
-  label.FontFace=Font.new("rbxasset://fonts/families/Zekton.json",Enum.FontWeight.Regular,Enum.FontStyle.Normal)
-  label.TextColor3=Color3.fromRGB(255,91,129)
-  label.TextStrokeColor3=Color3.fromRGB(255,35,82)
-  label.TextStrokeTransparency=0.53
+  label.FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Bold,Enum.FontStyle.Normal)
+  label.TextColor3=Color3.fromRGB(255,139,166)
+  label.TextStrokeTransparency=1
   label.TextTransparency=0
   label.TextXAlignment=Enum.TextXAlignment.Center
-  label.ZIndex=4
-  local glow=label:Clone()
-  glow.Name="PremiumTextGlow"
-  glow.TextSize=13
-  glow.TextColor3=Color3.fromRGB(255,52,99)
-  glow.TextTransparency=0.72
-  glow.TextStrokeTransparency=0.38
-  glow.ZIndex=2
-  glow.Parent=tag
+  label.TextYAlignment=Enum.TextYAlignment.Center
+  label.ZIndex=8
  end
- local crownGlow=Instance.new("TextLabel")
- crownGlow.Name="CrownGlow"
- crownGlow.BackgroundTransparency=1
- crownGlow.Position=UDim2.fromOffset(6,-1)
- crownGlow.Size=UDim2.fromOffset(27,30)
- crownGlow.Text="♛"
- crownGlow.FontFace=Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Bold,Enum.FontStyle.Normal)
- crownGlow.TextSize=26
- crownGlow.TextColor3=Color3.fromRGB(255,36,83)
- crownGlow.TextTransparency=0.65
- crownGlow.TextStrokeColor3=Color3.fromRGB(255,40,88)
- crownGlow.TextStrokeTransparency=0.3
- crownGlow.ZIndex=2
- crownGlow.Parent=tag
- local crown=crownGlow:Clone()
- crown.Name="Crown"
- crown.Position=UDim2.fromOffset(7,0)
- crown.Size=UDim2.fromOffset(25,28)
- crown.TextSize=21
- crown.TextColor3=Color3.fromRGB(255,96,136)
- crown.TextTransparency=0
- crown.TextStrokeColor3=Color3.fromRGB(246,35,88)
- crown.TextStrokeTransparency=0.23
- crown.ZIndex=5
+
+ local separator=Instance.new("Frame")
+ separator.Name="PremiumSeparator"
+ separator.Size=UDim2.fromOffset(1,14)
+ separator.Position=UDim2.fromOffset(39,7)
+ separator.BackgroundColor3=Color3.fromRGB(182,49,86)
+ separator.BackgroundTransparency=0.52
+ separator.BorderSizePixel=0
+ separator.ZIndex=7
+ separator.Parent=tag
+
+ local crown=Instance.new("Frame")
+ crown.Name="PremiumCrown"
+ crown.BackgroundTransparency=1
+ crown.BorderSizePixel=0
+ crown.Position=UDim2.fromOffset(8,5)
+ crown.Size=UDim2.fromOffset(26,19)
+ crown.ZIndex=8
  crown.Parent=tag
- local pulse=TweenInfo.new(1.25,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true)
- local tw1=TweenService:Create(crown,pulse,{TextColor3=Color3.fromRGB(255,189,204),TextStrokeTransparency=0.04})
- local tw2=TweenService:Create(crownGlow,pulse,{TextTransparency=0.38})
- local tw3=TweenService:Create(border,pulse,{Transparency=0,Thickness=1.9})
- local tw4=TweenService:Create(halo,pulse,{Transparency=0.55})
- local tw5
- if label then tw5=TweenService:Create(label,pulse,{TextColor3=Color3.fromRGB(255,174,194),TextStrokeTransparency=0.3}) end
- local tweens={tw1,tw2,tw3,tw4}
- if tw5 then table.insert(tweens,tw5) end
+
+ local red=Color3.fromRGB(255,87,127)
+ local highlight=Color3.fromRGB(255,167,187)
+ local twinkle={}
+ local function line(x1,y1,x2,y2,thick,color,alpha,z)
+  local dx,dy=x2-x1,y2-y1
+  local segment=Instance.new("Frame")
+  segment.Name="CrownStroke"
+  segment.AnchorPoint=Vector2.new(0.5,0.5)
+  segment.Position=UDim2.fromOffset((x1+x2)*0.5,(y1+y2)*0.5)
+  segment.Size=UDim2.fromOffset(math.sqrt(dx*dx+dy*dy),thick)
+  segment.Rotation=math.deg(math.atan2(dy,dx))
+  segment.BackgroundColor3=color
+  segment.BackgroundTransparency=alpha
+  segment.BorderSizePixel=0
+  segment.ZIndex=z
+  segment.Parent=crown
+  local corners=Instance.new("UICorner")
+  corners.CornerRadius=UDim.new(1,0)
+  corners.Parent=segment
+  return segment
+ end
+ local edges={
+  {2,4,6,14},
+  {6,14,13,3},
+  {13,3,20,14},
+  {20,14,24,4},
+  {6,14,5,17},
+  {20,14,21,17},
+  {5,17,21,17}
+ }
+ for _,edge in ipairs(edges) do
+  line(edge[1],edge[2],edge[3],edge[4],4.3,Color3.fromRGB(238,30,80),0.82,9)
+  line(edge[1],edge[2],edge[3],edge[4],1.8,red,0,10)
+ end
+ for _,point in ipairs({{2,4},{13,3},{24,4}}) do
+  local gem=Instance.new("Frame")
+  gem.Name="CrownJewel"
+  gem.AnchorPoint=Vector2.new(0.5,0.5)
+  gem.Position=UDim2.fromOffset(point[1],point[2])
+  gem.Size=UDim2.fromOffset(3.6,3.6)
+  gem.BackgroundColor3=highlight
+  gem.BorderSizePixel=0
+  gem.ZIndex=11
+  gem.Parent=crown
+  local round=Instance.new("UICorner")
+  round.CornerRadius=UDim.new(1,0)
+  round.Parent=gem
+  table.insert(twinkle,gem)
+ end
+
+ local pulse=TweenInfo.new(1.8,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true)
+ local tweens={
+  TweenService:Create(border,pulse,{Transparency=0,Color=Color3.fromRGB(255,111,149)}),
+  TweenService:Create(halo,pulse,{Transparency=0.74}),
+ }
+ if label then
+  table.insert(tweens,TweenService:Create(label,pulse,{TextColor3=Color3.fromRGB(255,185,202)}))
+ end
+ for _,gem in ipairs(twinkle) do
+  table.insert(tweens,TweenService:Create(gem,pulse,{BackgroundColor3=Color3.fromRGB(255,208,219)}))
+ end
  for _,tw in ipairs(tweens) do tw:Play() end
  return tweens
 end
