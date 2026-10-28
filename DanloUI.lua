@@ -1,4 +1,4 @@
-local DanloUI = {Version = "1.1.0"}
+local DanloUI = {Version = "1.2.0"}
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -5040,7 +5040,7 @@ local function build()
  set(obj[972],"Selectable",false)
  set(obj[972],"Size",UDim2.new(0,451,0,19))
  set(obj[972],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[972],"Text","")
+ set(obj[972],"Text","D A N L O H U B   /   E D I T O R")
  set(obj[972],"TextColor3",Color3.new(1,0.60000002,0.65490198))
  set(obj[972],"TextDirection",enum("TextDirection",0))
  set(obj[972],"TextScaled",false)
@@ -5075,7 +5075,7 @@ local function build()
  set(obj[973],"Selectable",false)
  set(obj[973],"Size",UDim2.new(0,375,0,40))
  set(obj[973],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[973],"Text","")
+ set(obj[973],"Text","TU MENÚ. TU ESTILO.")
  set(obj[973],"TextColor3",Color3.new(0.98039216,0.98823529,1))
  set(obj[973],"TextDirection",enum("TextDirection",0))
  set(obj[973],"TextScaled",false)
@@ -5110,7 +5110,7 @@ local function build()
  set(obj[974],"Selectable",false)
  set(obj[974],"Size",UDim2.new(0,540,0,22))
  set(obj[974],"SizeConstraint",enum("SizeConstraint",0))
- set(obj[974],"Text","")
+ set(obj[974],"Text","PLANTILLA VISUAL · PERSONALIZA CADA MÓDULO")
  set(obj[974],"TextColor3",Color3.new(0.79215688,0.7019608,0.75686276))
  set(obj[974],"TextDirection",enum("TextDirection",0))
  set(obj[974],"TextScaled",false)
@@ -7420,7 +7420,7 @@ local function build()
  set(obj[1447],"Position",UDim2.new(0,0,0,-5))
  set(obj[1447],"Size",UDim2.new(0,580,0,15))
  set(obj[1447],"BackgroundTransparency",1)
- set(obj[1447],"Text","")
+ set(obj[1447],"Text","ICONOS ORIGINALES   ·   ARRASTRA, COPIA Y PERSONALIZA")
  set(obj[1447],"TextSize",10)
  set(obj[1447],"TextColor3",Color3.new(0.89411765,0.50196078,0.63529412))
  set(obj[1447],"FontFace",Font.new("rbxasset://fonts/families/GothamSSm.json",Enum.FontWeight.Bold,Enum.FontStyle.Normal))
@@ -13837,13 +13837,26 @@ function DanloUI:CreateWindow(config)
  navArea.ScrollingDirection=Enum.ScrollingDirection.Y
  navArea.CanvasSize=UDim2.fromOffset(0,351)
  navArea.Parent=sidebar
+ local resources=Instance.new("Folder")
+ resources.Name="DanloUI_Resources"
+ resources.Parent=gui
+ for _,source in pairs(templates) do
+  source.Visible=false
+  source.Parent=resources
+ end
+ navTemplate.Visible=false
+ navTemplate.Parent=resources
+ pageTemplate.Visible=false
+ pageTemplate.Parent=resources
  local sidebarTiles=home:WaitForChild("IconPalette")
- sidebarTiles.Name="DanloUIIconAssets"
- sidebarTiles.Parent=gui
- sidebarTiles.Visible=false
- home:Destroy()
+ home.Name="HomeOriginalTemplate"
+ home.Visible=false
+ home.Parent=resources
  local navHome=sidebar:FindFirstChild("Nav_home")
- if navHome then navHome:Destroy() end
+ if navHome then
+  navHome.Visible=false
+  navHome.Parent=resources
+ end
  local footerProfile=sidebar:FindFirstChild("FooterProfile")
  if footerProfile then footerProfile.Visible=false end
  local footer=window:FindFirstChild("Footer")
@@ -13902,6 +13915,13 @@ function DanloUI:CreateWindow(config)
   if tab then showPage(id) end
  end
  function win:GetTab(id) return tabs[id] end
+ function win:GetHomePage() return self.Home and self.Home.Page end
+ function win:CloneTemplate(name)
+  local source=templates[name] or home:FindFirstChild(tostring(name),true)
+  if not source and name=="OriginalHome" then source=home end
+  if not source then return nil end
+  return source:Clone()
+ end
  function win:Destroy()
   if not running then return end
   running=false
@@ -13942,9 +13962,11 @@ function DanloUI:CreateWindow(config)
  function win:CreateTab(args)
   local info=cfgTable(args)
   local tabName=makeName(info.Name or info.Title or "PESTAÑA")
+  if tabName:upper()=="INICIO" and win.Home then return win.Home end
   nextId=nextId+1
   local id="tab"..tostring(nextId)
   local nav=navTemplate:Clone()
+  nav.Visible=true
   nav.Name="Nav_"..id
   nav.Position=UDim2.fromOffset(10,3+(nextId-1)*50)
   nav.NavLabel.Text=tabName
@@ -13959,7 +13981,7 @@ function DanloUI:CreateWindow(config)
   page.CanvasSize=UDim2.fromOffset(0,332)
   page.Parent=host
   pageCards[page]=0
-  local tab={Name=tabName,Description=tostring(info.Description or ""),Icon=info.Icon,Page=page,Nav=nav,Controls={},Id=id}
+  local tab={Name=tabName,Description=tostring(info.Description or "PREMIUN"),Icon=info.Icon,Page=page,Nav=nav,Controls={},Id=id}
   tabs[id]=tab
   keep(nav.Activated:Connect(function()showPage(id)end))
   if nextId==1 then showPage(id) end
@@ -14149,6 +14171,7 @@ function DanloUI:CreateWindow(config)
  end
 
  local function watch(object)
+  if object:IsDescendantOf(resources) then return end
   if object:IsA("UIGradient") and object.Name=="NeonFlow" then
    gradients[object]=true
   elseif object:IsA("TextButton") then
@@ -14234,6 +14257,7 @@ function DanloUI:CreateWindow(config)
  workspacePanel.CurrentPageTitle.Text=""
  workspacePanel.CurrentPageDescription.Text=""
  workspacePanel.CurrentPageDescription.Visible=false
+ win.Home=win:CreateTab({Name="INICIO",Icon="INICIO",Description="PREMIUN"})
  window.Visible=true
  DanloUI._activeWindow=win
  return win
